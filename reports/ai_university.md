@@ -1,125 +1,128 @@
-![cover](ai_university_cover.png)
 # 🎓 AI 轉型大學日報
-> 生成時間：2026-02-07 15:29 | 43 個資訊來源
+> 生成時間：2026-02-09 08:42 | 43 個資訊來源
 
 ---
 
 ## 🔥 頭條精選 (Top 5)
 > 跨層級最重要的 AI 產業動態
 
-### 1. [Introducing Claude Opus 4.6](https://www.anthropic.com/news/claude-opus-4-6)
-📊 **Hacker News** | 2284 points | 1 day ago
-Anthropic 發布 Claude Opus 4.6，為最強推理模型。新模型在 agentic coding（Terminal-Bench 2.0）、知識工作（GDPval-AA 領先 GPT-5.2 達 144 Elo）及深度搜尋（BrowseComp）均達業界最佳。首度支援 1M token context window，新增 agent team 協作、adaptive thinking、context compaction 等功能。API 定價維持 $5/$25 per million tokens。
-- 🎯 **核心觀點**：Opus 級別模型首次支援百萬 token 上下文，agentic coding 能力大幅提升，可組建 agent 團隊協作
-- 💡 **產業影響**：企業級 AI 工作流從「單一模型對話」邁向「多 agent 協作」，對法律、金融等知識密集產業衝擊加劇
-- 🏷️ `#L4模型` `#Anthropic` `#AgenticAI`
+### 1. [Qwen3.5 PR 已開啟——下一代模型將內建視覺語言能力](https://reddit.com/r/LocalLLaMA/comments/1qz23pp/pr_opened_for_qwen35/)
+📊 **r/LocalLLaMA** | 539 pts | 2026-02-08 14:57
+Qwen3.5 系列模型的 HuggingFace Transformers PR 已提交，程式碼顯示將原生支援視覺語言模型（VLM）。這意味著阿里巴巴的下一代開源模型將在發布時就具備多模態能力，直接與 GPT-5.2、Claude Opus 4.6 競爭。
+- 🎯 **核心觀點**：開源模型的多模態能力正加速追趕閉源前沿，VLM 成為標配而非加分項
+- 💡 **產業影響**：企業可用開源多模態模型降低 API 成本，本地部署場景大幅擴展
+- 🏷️ `#L4模型` `#Qwen` `#開源` `#多模態`
 
 ---
 
-### 2. [Subquadratic Attention: 100 tok/s @ 1M context, 76 tok/s @ 10M context (30B model, single GPU)](https://reddit.com/r/LocalLLaMA/comments/1qxpf86/release_experimental_model_with_subquadratic/)
-📊 **r/LocalLLaMA** | 274 pts | 2026-02-07 02:19
-開源釋出 O(L^(3/2)) 次二次方注意力機制，30B 模型在單張 B200 GPU 上實現 1M token 109 tok/s、10M token 76 tok/s 的解碼速度。上下文增長 10 倍但速度僅降 30%，而非傳統 dense attention 的 10 倍減速。配套 Triton kernel、OpenAI-compatible server 一併開源。
-- 🎯 **核心觀點**：突破二次方瓶頸，讓超長上下文推論在消費級硬體上成為可行
-- 💡 **產業影響**：降低長文件分析、跨文件推理的運算門檻，地端 AI 部署迎來新可能
-- 🏷️ `#L4模型` `#開源` `#推論效率`
+### 2. [GPT-5.3-Codex 發布：SOTA SWE-Bench Pro 57%、OSWorld 64%](https://www.producthunt.com/products/openai)
+📊 **Product Hunt** | Top Product | 2026-02-05
+OpenAI 發布 GPT-5.3-Codex，在 SWE-Bench Pro（57%）和 OSWorld（64%）上創下新高。該模型支援中途引導（mid-task steerability），速度比 5.2 快 25%，並且是首個「參與創造自身」的模型——早期版本被用來除錯訓練過程本身。
+- 🎯 **核心觀點**：AI 編碼代理正從「輔助工具」進化為「自主開發者」，能端到端處理複雜工程任務
+- 💡 **產業影響**：開發者生產力工具市場重新洗牌，企業 AI 編碼支出將加速成長
+- 🏷️ `#L4模型` `#L6人才` `#OpenAI` `#Codex`
 
 ---
 
-### 3. [當 AI 能做出瑪利歐也能審合約，Project Genie 與 Claude Cowork 如何讓白領階級陷生存焦慮？](https://technews.tw/2026/02/07/will-claude-legal-replace-lawyers-and-the-software-industry/)
-📊 **科技新報** | 2026-02-07
-Anthropic 推出 Claude Cowork 法律外掛後，全球法律/金融/SaaS 類股一日蒸發 2,850 億美元。湯森路透暴跌 18%、Relx 重挫 14%、Sage 下跌 10%。Google Project Genie 也讓 Unity 暴跌 35%。倫敦市長公開警告 AI 將摧毀白領工作，英國計劃 2030 年前培訓千萬人 AI 技能。
-- 🎯 **核心觀點**：AI agent 工具從「模型供應商」跨入「應用層」，直接衝擊 SaaS 與專業服務產業
-- 💡 **產業影響**：白領取代潮從討論走向股市定價，法律、金融、顧問產業面臨結構性重估
-- 🏷️ `#L5商業應用` `#L6人才` `#SaaS崩盤`
+### 3. [Anthropic 與 OpenAI 超級盃廣告大戰——AI 產業走向主流消費者](https://www.theverge.com/entertainment/874504/super-bowl-lx-ads-big-game)
+📊 **The Verge** | 2026-02-08 18:58
+超級盃 LX 成為 AI 產業的分水嶺時刻：Anthropic 打出「對話中不該有廣告」攻擊 OpenAI 的廣告計畫，OpenAI 則以 Codex「你可以直接建造」反擊。Sam Altman 稱 Anthropic 廣告「明顯不誠實」，Anthropic 在播出版本中修改了措辭。
+- 🎯 **核心觀點**：AI 公司首次在超級盃舞台正面交鋒，標誌 AI 從技術圈進入主流消費認知
+- 💡 **產業影響**：品牌定位之爭白熱化，企業客戶將更關注 AI 供應商的商業模式與價值觀差異
+- 🏷️ `#L5商業` `#Anthropic` `#OpenAI` `#品牌戰`
 
 ---
 
-### 4. [納德拉下海當 PM、痛批 Copilot「不夠聰明」，微軟 AI 戰略大轉向內幕](https://technews.tw/2026/02/07/microsoft-shifts-ai-strategy-as-satya-nadella-into-product-development/)
-📊 **科技新報** | 2026-02-07
-微軟 CEO Satya Nadella 親自介入 Copilot 產品開發，公開批評現有 AI 助手不夠智慧。顯示微軟對 AI 商業化進度不滿，正從「投資 OpenAI」轉向深度整合自家產品線，以 AI-first 策略重塑 Office、Azure 等核心業務。
-- 🎯 **核心觀點**：微軟最高層親自操刀 AI 產品，反映企業 AI 商業化遭遇用戶期待落差
-- 💡 **產業影響**：雲端平台競爭從「誰接入最強模型」轉向「誰能讓 AI 真正好用」
-- 🏷️ `#L3雲端` `#L5商業應用` `#Microsoft`
+### 4. [紐約州提出兩項 AI 法案：AI 新聞標示 + 資料中心建設暫停三年](https://www.theverge.com/ai-artificial-intelligence/875501/new-york-is-considering-two-bills-to-rein-in-the-ai-industry)
+📊 **The Verge** | 2026-02-08 16:04
+紐約州立法機構考慮兩項法案：NY FAIR News Act 要求 AI 生成的新聞必須標示並經人工審核；S9144 則提出暫停新資料中心建設許可三年，因電力需求三倍增長、未來五年預計新增 10GW 負載。
+- 🎯 **核心觀點**：AI 監管從聯邦層級擴展到州級，能源與內容兩條戰線同時推進
+- 💡 **產業影響**：資料中心選址策略需重新評估，AI 內容生態的合規成本將提高
+- 🏷️ `#L1能源` `#L6人才` `#監管` `#資料中心`
 
 ---
 
-### 5. [OpenClaw 技能生態淪為惡意軟體攻擊面](https://reddit.com/r/LocalLLaMA/comments/1qxrogr/a_topdownloaded_openclaw_skill_is_actually_a/)
-📊 **r/LocalLLaMA** | 142 pts | 2026-02-07 03:41
-1Password 安全專家揭露，OpenClaw 熱門下載技能實為分階段惡意軟體傳遞鏈，可竊取 macOS 憑證與 token。後續調查發現數百個惡意技能參與同一攻擊行動。Agent 技能生態缺乏程式碼簽章、沙箱與信任層，成為 AI 時代新型供應鏈攻擊面。
-- 🎯 **核心觀點**：AI agent 生態系的「技能市場」正面臨與 npm/PyPI 相同的供應鏈安全危機
-- 💡 **產業影響**：企業部署 AI agent 須建立技能驗證、權限隔離與可撤銷憑證機制
-- 🏷️ `#L5商業應用` `#資安` `#供應鏈攻擊`
+### 5. [McKinsey 將 25,000 個 AI Agent 納入「員工數」——顧問業槓桿模型正在改寫](https://www.infoai.com.tw/blog/mckinsey-ai-agents-digital-workforce-redefined)
+📊 **InfoAI** | 2026-02-08
+McKinsey CEO 宣布公司約 60,000 名「員工」中有 25,000 個 AI Agent，透過「25-squared」策略（面客角色增 25%、非面客縮減 25%），在搜尋與彙整類工作上省下約 150 萬小時。管理語言正式把 AI 從工具提升為「可被盤點的數位勞動單位」。
+- 🎯 **核心觀點**：頂級顧問公司率先將 AI Agent 制度化為「數位員工」，工時計價模式面臨結構性挑戰
+- 💡 **產業影響**：企業 AI 轉型從「導入工具」升級為「重新定義人力」，催生新的組織設計範式
+- 🏷️ `#L5商業` `#L6人才` `#AIAgent` `#McKinsey`
 
 ---
 
 ## ⚡ L1: 能源與基礎設施
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| SuperX 與日本合作夥伴簽署 MOU，在三重縣試點 AI 資料中心，初始 4MW，未來可擴至 300MW，採模組化液冷架構 | 科技新報 | 02-07 | [SuperX 強化日本布局，攜手當地合作夥伴探索 AI 資料中心](https://technews.tw/2026/02/07/superx/) |
-| Chamber 推出 GPU 基礎設施自動管理平台，聲稱行業平均 40-60% GPU 閒置率造成每年 2400 億美元浪費 | Product Hunt | 02-03 | [Chamber: Autopilot for AI Infrastructure](https://www.producthunt.com/products/chamber-autopilot-for-ai-infrastructure) |
-| ComfyUI 用戶反映 RX 9070 XT 運行 Wan 2.2 時室內燈光閃爍，GPU 功耗過高拉垮家用電路 | r/comfyui | 02-07 | [My room lights flicker when I run Wan 2.2 (9070 XT)](https://reddit.com/r/comfyui/comments/1qxxj6x/my_room_lights_flicker_when_i_run_wan_22_9070_xt/) |
+| 紐約州提出暫停資料中心建設三年，因電力需求暴增 10GW | The Verge | 16:04 | [New York is considering two bills to rein in the AI industry](https://www.theverge.com/ai-artificial-intelligence/875501/new-york-is-considering-two-bills-to-rein-in-the-ai-industry) |
+| AI 資料中心擴張成為重大能源衝擊，電網準備好了嗎？ | r/energy | 04:41 | [The AI data center boom is becoming a major energy demand shock](https://reddit.com/r/energy/comments/1qzk6tp/the_ai_data_center_boom_is_becoming_a_major/) |
+| Chamber 推出 GPU 基礎設施自動化管理平台，解決 40-60% 閒置率問題 | Product Hunt | 2026-02-03 | [Chamber: Autopilot for AI Infrastructure](https://www.producthunt.com/products/chamber-autopilot-for-ai-infrastructure) |
+| MIT 教授探討 AI 如何優化電網——提升效率、增加韌性、整合再生能源 | MIT News AI | 2026-01-09 | [3 Questions: How AI could optimize the power grid](https://news.mit.edu/2026/3-questions-how-ai-could-optimize-power-grid-0109) |
+| 台灣 GDP 因 AI 外需爆衝 8.63%，但壓力正往金融穩定集結 | InfoAI | 2026-02-02 | [台灣 GDP 爆衝的真相](https://www.infoai.com.tw/blog/taiwan-gdp-ai-export-financial-stability-risk) |
 
 ## 🔧 L2: 晶片與算力
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| 開源 Geodesic Attention Engine (GAE)，1M token 僅需 1.09 GB VRAM（標準需 4.4 TB），精確注意力非近似，節能 75%+ | r/LocalLLaMA | 02-07 | [Open-sourced exact attention kernel - 1M tokens in 1GB VRAM](https://reddit.com/r/LocalLLaMA/comments/1qy5jm3/opensourced_exact_attention_kernel_1m_tokens_in/) |
-| Nemo 30B 在單張 3090 + 32GB RAM 上達成 1M+ token context、35 tok/s 速度，MoE 架構配合 CPU offloading | r/LocalLLaMA | 02-07 | [Nemo 30B is insane. 1M+ token CTX on one 3090](https://reddit.com/r/LocalLLaMA/comments/1qy0l26/nemo_30b_is_insane_1m_token_ctx_on_one_3090/) |
-| GLM 5 正在 OpenRouter 上進行測試，社群高度關注 | r/LocalLLaMA | 02-07 | [GLM 5 Is Being Tested On OpenRouter](https://reddit.com/r/LocalLLaMA/comments/1qxqpdz/glm_5_is_being_tested_on_openrouter/) |
-| Differential Transformer V2 發布，改善推論效率、訓練穩定度，支援直接使用 FlashAttention，無需自訂 kernel | HuggingFace Blog | 01-20 | [Differential Transformer V2](https://huggingface.co/blog/microsoft/diff-attn-v2) |
+| Strix Halo 雙節點叢集 RDMA 推論基準測試，展示消費級分散式 AI | r/LocalLLaMA | 03:16 | [Strix Halo Distributed Cluster benchmarks](https://reddit.com/r/LocalLLaMA/comments/1qzhxd0/strix_halo_distributed_cluster_2x_strix_halo_rdma/) |
+| Oracle AI Database 26ai 正式發布 Linux 版，內建 AI 向量搜尋與 MCP 支援 | Publickey | 2026-01-28 | [オラクル、Linux版の「Oracle AI Database 26ai」正式リリース](https://www.publickey1.jp/blog/26/linuxoracle_ai_database_26ai.html) |
+| iPhone 17e 將搭載 A19 晶片，Apple 積極搶攻新興市場 | The Verge | 10:26 | [The iPhone 17e could launch soon with MagSafe and an A19 chip](https://www.theverge.com/tech/875454/iphone-17e-launching-soon-magsafe-a19) |
 
 ## ☁️ L3: 雲端與平台
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| Oracle AI Database 26ai 正式發布 Linux 版，支援 MCP server、AI 向量搜尋、Select AI Agent 框架 | Publickey | 01-28 | [オラクル、Linux版の「Oracle AI Database 26ai」正式リリース](https://www.publickey1.jp/blog/26/linuxoracle_ai_database_26ai.html) |
-| GitHub Agent HQ 上線：可在 GitHub/VS Code 直接使用 Claude、Codex 與 Copilot，支援自訂 agent | Product Hunt | 02-04 | [GitHub Agent HQ](https://www.producthunt.com/products/github) |
-| Perplexity 推出 Model Council，同時對 GPT-5.2、Claude Opus 等多模型查詢並合成結果 | Product Hunt | 02-05 | [Model Council in Perplexity](https://www.producthunt.com/products/perplexity-ai) |
-| Agent Sandbox 提供 AI agent 專用遠端沙箱環境，一個 API 即可上傳、執行、取回成果物 | Product Hunt | 02-04 | [Agent Sandbox](https://www.producthunt.com/products/agent-sandbox) |
-| Google AI Plus 以 $7.99/月進軍美國及 35 國，含 Gemini 3 Pro、Flow、NotebookLM，正面對打 ChatGPT Go | InfoAI | 01-29 | [Google「AI Plus」7.99 美元進軍美國](https://www.infoai.com.tw/blog/google-ai-plus-us-799-35-countries-gemini-3-pro) |
-| 博弘雲端以「AI 系統整合商」定位，協助 HAPPY GO 整合 Databricks 數據平台，廣告點擊轉換率提升 50% | 數位時代 | 01-30 | [從智慧助手到自主代理：博弘雲端如何帶領企業走上 AI 實踐之路](https://www.bnext.com.tw/article/89928/nextlinkcloud202601) |
+| Claude Opus 4.6 × Vertex AI 完全指南：在 GCP 上安全使用 Claude Code | はてなブックマーク | 2026-02-08 | [Claude Opus 4.6 × Vertex AI 完全ガイド](https://zenn.dev/google_cloud_jp/articles/b65dc4d6df7f34) |
+| OpenAI 推出 Frontier 企業平台——管理 AI Agent 的身分、權限與稽核 | AI News | 10:00 | [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/) |
+| Perplexity 推出 Model Council：同時查詢多個前沿模型並綜合結果 | Product Hunt | 2026-02-05 | [Model Council in Perplexity](https://www.producthunt.com/products/perplexity-ai) |
+| Cisco 打造 AI 時代智慧系統——Nexus Hyperfabric、Secure AI Factory 框架 | AI News | 10:00 | [How Cisco builds smart systems for the AI era](https://www.artificialintelligence-news.com/news/how-cisco-builds-smart-systems-for-the-ai-era/) |
+| DigitalOcean 以 Gradient AI 雲端統一 GPU 基礎設施與 Agent 平台 | Dev.to | 2026-02-02 | [DigitalOcean on Dev.to: Practical AI Insights for Builders](https://dev.to/digitalocean/digitalocean-on-devto-practical-ai-insights-for-builders-3g0c) |
 
 ## 🧠 L4: AI 模型與研究
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| Claude Opus 4.6 發布，Terminal-Bench 2.0 與 Humanity's Last Exam 雙料冠軍，支援 1M context | Hacker News | 1 day ago | [Claude Opus 4.6](https://www.anthropic.com/news/claude-opus-4-6) |
-| 次二次方注意力機制開源，30B 模型單 GPU 達 10M token 76 tok/s | r/LocalLLaMA | 02-07 02:19 | [Subquadratic Attention Release](https://reddit.com/r/LocalLLaMA/comments/1qxpf86/release_experimental_model_with_subquadratic/) |
-| Waymo World Model 發布，基於 Genie 3 生成超寫實自動駕駛模擬環境，含相機+光達多模態輸出 | Hacker News | 15h ago | [The Waymo World Model](https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation) |
-| 中國開源 AI 生態一年回顧：MoE 成預設架構，多模態/Agent 方向全面推進 | HuggingFace Blog | 01-27 | [Architectural Choices in China's Open-Source AI Ecosystem](https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2) |
-| LinkedIn 分享 GPT-OSS 模型 Agentic RL 訓練實戰，使用 verl 框架在 gsm8k 等任務上驗證 | HuggingFace Blog | 01-27 | [Unlocking Agentic RL Training for GPT-OSS](https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl) |
-| MIT 研究團隊發布 EnCompass：自動回溯與平行搜尋的 AI agent 程式框架 | MIT News AI | 02-05 | [Helping AI agents search to get the best results from LLMs](https://news.mit.edu/2026/helping-ai-agents-search-to-get-best-results-from-llms-0205) |
-| MIT 利用 AI 加速治療藥物發現與設計，合成生物學結合運算預測 | MIT News AI | 02-04 | [Using AI to accelerate discovery of therapeutic drugs](https://news.mit.edu/2026/3-questions-using-ai-to-accelerate-discovery-design-therapeutic-drugs-0204) |
-| Google Agent Factory 分享開源 agentic 模型從資料蒐集到 RL 訓練的完整流程 | Dev.to | 02-06 | [Agent Factory Recap: Cracking Open an Open Model](https://dev.to/googleai/agent-factory-recap-cracking-open-an-open-model-42e6) |
-| Gemini 3.0 Flash 用於機器人影片理解，將影片拆解為結構化動作序列 | Dev.to | 02-05 | [Video Understanding with Gemini 3.0 Flash for Robotics](https://dev.to/googleai/video-understanding-with-gemini-30-flash-for-robotics-5896) |
-| HuggingFace 發布 Flow Matching 訓練研究，PRX-1.2B 模型在 Flux VAE 潛空間的實驗 | HuggingFace Blog | 02-06 | [Training a Flow Matching Model](https://huggingface.co/blog/prx-flow-matching-training) |
-| Overworld 發布 Waypoint-1：即時互動式影片擴散模型，支援鍵盤滑鼠控制 | HuggingFace Blog | 01-20 | [Introducing Waypoint-1](https://huggingface.co/blog/waypoint-1) |
+| Qwen3.5 PR 已開啟，將原生支援視覺語言模型 | r/LocalLLaMA | 14:57 | [PR opened for Qwen3.5!!](https://reddit.com/r/LocalLLaMA/comments/1qz23pp/pr_opened_for_qwen35/) |
+| Qwen3 Coder Next 成為首個「可用」的 60GB 以下編碼模型 | r/LocalLLaMA | 18:43 | [Qwen3 Coder Next as first "usable" coding model < 60 GB](https://reddit.com/r/LocalLLaMA/comments/1qz5uww/qwen3_coder_next_as_first_usable_coding_model_60/) |
+| MiniMax M2.2 即將發布，程式碼洩露新版本 | r/LocalLLaMA | 07:22 | [MiniMax M2.2 Coming Soon!](https://reddit.com/r/LocalLLaMA/comments/1qzo77z/minimax_m22_coming_soon/) |
+| DeepSeek 時刻一週年：中國開源 AI 生態三部曲分析 | HuggingFace Blog | 2026-01-20 | [One Year Since the "DeepSeek Moment"](https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment) |
+| 中國開源 AI 生態架構選擇：MoE 成為預設、多模態平行推進 | HuggingFace Blog | 2026-01-27 | [Architectural Choices in China's Open-Source AI Ecosystem](https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2) |
+| Claude 教開源模型寫 CUDA Kernel——Agent Skill 跨模型遷移 | HuggingFace Blog | 2026-01-28 | [We Got Claude to Build CUDA Kernels and teach open models!](https://huggingface.co/blog/upskill) |
+| Differential Transformer V2：更快推論、更穩訓練的注意力機制改進 | HuggingFace Blog | 2026-01-20 | [Differential Transformer V2](https://huggingface.co/blog/microsoft/diff-attn-v2) |
+| MIT EnCompass：分離邏輯與搜尋提升 AI Agent 可擴展性 | AI News | 11:32 | [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/) |
+| MIT 研究：生成式 AI 指導科學家合成複雜材料 | MIT News AI | 2026-02-02 | [How generative AI can help scientists synthesize complex materials](https://news.mit.edu/2026/how-generative-ai-can-help-scientists-synthesize-complex-materials-0202) |
+| MIT 開發 EnCompass 幫助 AI Agent 搜尋 LLM 最佳輸出 | MIT News AI | 2026-02-05 | [Helping AI agents search to get the best results out of LLMs](https://news.mit.edu/2026/helping-ai-agents-search-to-get-best-results-from-llms-0205) |
+| LinkedIn 解鎖 GPT-OSS 的 Agentic RL 訓練 | HuggingFace Blog | 2026-01-27 | [Unlocking Agentic RL Training for GPT-OSS](https://huggingface.co/blog/LinkedIn/gpt-oss-agentic-rl) |
+| Microsoft 揭露偵測 LLM「沉睡代理人」後門的掃描方法 | AI News | 10:43 | [Microsoft unveils method to detect sleeper agent backdoors](https://www.artificialintelligence-news.com/news/microsoft-unveils-method-detect-sleeper-agent-backdoors/) |
+| 推理模式 vs 非推理模式基準對比：差距可達 5 倍 | r/LocalLLaMA | 07:00 | [Comparing the same model with reasoning turned on and off](https://reddit.com/r/LocalLLaMA/comments/1qznps2/comparing_the_same_model_with_reasoning_turned_on/) |
+| CRISPR-PAMdb + CICERO：用機器學習預測 Cas9 PAM 偏好 | Nature Comms | 2026-02-08 | [Uncovering Cas9 PAM diversity through metagenomic mining and ML](https://www.nature.com/articles/s41467-026-69098-5) |
+| 日本開發者打造 AI Agent yagi：支援 15 種 LLM 供應商的 CLI 工具 | Zenn | 2026-02-07 | [AI Agent yagi を作った](https://zenn.dev/mattn/articles/af6b456142dafe) |
 
 ## 🚀 L5: 商業應用與新創
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| Anthropic 法律外掛引爆 2850 億美元股市崩盤，SaaS 被 AI 團滅成熱門話題 | 科技新報 | 02-07 | [Project Genie 與 Claude Cowork 引爆白領焦慮](https://technews.tw/2026/02/07/will-claude-legal-replace-lawyers-and-the-software-industry/) |
-| OpenAI Frontier 定位為企業 AI agent 管理平台，核心不是更強模型而是治理、權限、稽核 | InfoAI | 02-06 | [OpenAI 把 AI 代理人拉到「平台層」](https://www.infoai.com.tw/blog/openai-frontier-agent-governance-platform-enterprise-control) |
-| 「沒產品、沒營收」的 neolabs 改寫募資規則，Humans& 種子輪 4.8 億美元估值 44.8 億 | InfoAI | 02-02 | [AI「研究型新創」正在改寫募資規則](https://www.infoai.com.tw/blog/ai-research-startups-funding-without-products) |
-| RentAHuman.ai 讓 AI agent 租用真人完成實體任務，支援 MCP 整合 | Product Hunt | 02-05 | [RentAHuman.ai](https://www.producthunt.com/products/rentahuman-ai) |
-| Pydantic 開源 Monty：Rust 寫的最小安全 Python 直譯器，專為 AI agent 設計，啟動 <1μs | Hacker News | 9h ago | [Monty: Secure Python interpreter for AI](https://github.com/pydantic/monty) |
-| Smooth CLI：專為 AI agent 打造的瀏覽器工具，以自然語言取代低階點擊操作，宣稱速度快 20 倍 | Hacker News | 14h ago | [Smooth CLI – Token-efficient browser for AI agents](https://docs.smooth.sh/cli/overview) |
-| OpenClaw 技能生態遭惡意軟體滲透，數百個惡意技能組成攻擊行動 | r/LocalLLaMA | 02-07 | [OpenClaw skill malware delivery chain](https://reddit.com/r/LocalLLaMA/comments/1qxrogr/a_topdownloaded_openclaw_skill_is_actually_a/) |
-| HuggingFace 發布 Daggr：用 Python 建構 AI 工作流、自動生成視覺化畫布 | HuggingFace Blog | 01-29 | [Introducing Daggr](https://huggingface.co/blog/daggr) |
-| 高盛解讀本週市場焦點：「AI-SaaS」之爭 | Wall Street CN | 02-07 | [高盛解读本周市场焦点："AI-SaaS"之争](https://wallstreetcn.com/articles/3765210) |
-| OneAD 以 Creative AI 協助台灣福斯商旅連續 5 檔合作，結合 AdTech 數據動態展演 | 數位時代 | 02-02 | [廣告產製進入 Gen AI 時代](https://www.bnext.com.tw/article/89941/onead202601) |
-| 日本 ASCII 報導 OpenClaw（前身 Moltbot/Clawdbot）：可代操 PC 的 AI agent，安全性爭議大 | はてなブックマーク | 02-02 | [面白すぎて危険すぎ！PCを"勝手に動かす"AI、OpenClaw](https://ascii.jp/elem/000/004/370/4370464/) |
-| 奧義賽博以 AI 自動化資安解決方案登上台灣創新板，90%+ 訂閱續約率 | 創業小聚 | 02-07 | [奧義賽博擬登創新板](https://technews.tw/2026/02/07/cycarrier-ipo/) |
+| AI 法律代理人可能成真？Opus 4.6 在 APEX-Agents 法律基準跳升至 29.8% | TechCrunch | 20:26 | [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/) |
+| 「AI 律師」不是突然出現——法律工作被拆成可交付的流程段 | InfoAI | 2026-02-08 | [精選解讀｜「AI 律師」沒有突然出現](https://www.infoai.com.tw/blog/ai-legal-workflows-responsibility-audit-traceability) |
+| OpenAI 把 AI 代理人拉到「平台層」：企業買的是「管得住」 | InfoAI | 2026-02-06 | [OpenAI 把 AI 代理人拉到「平台層」](https://www.infoai.com.tw/blog/openai-frontier-agent-governance-platform-enterprise-control) |
+| Shannon 自主 AI 滲透測試工具：XBOW 基準達 96.15% 成功率 | GitHub Trending | Today | [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon) |
+| Dexter：自主金融研究代理人，支援任務規劃與自我驗證 | GitHub Trending | Today | [virattt/dexter](https://github.com/virattt/dexter) |
+| Pydantic Monty：Rust 寫的安全 Python 直譯器，專為 AI Agent 設計 | GitHub Trending | Today | [pydantic/monty](https://github.com/pydantic/monty) |
+| 博弘雲端 AI 系統整合商：HAPPY GO 廣告點擊轉換率提升 50% | 數位時代 | 2026-01-30 | [從智慧助手到自主代理](https://www.bnext.com.tw/article/89928/nextlinkcloud202601) |
+| 微軟推出「出版商內容市集」試辦——AI 引用內容可授權交易 | InfoAI | 2026-02-08 | [微軟推出「出版商內容市集」試辦](https://www.infoai.com.tw/blog/microsoft-publisher-content-marketplace-ai-licensing-experiment) |
+| 「沒產品、沒營收」也能成獨角獸——AI 研究型新創改寫募資規則 | InfoAI | 2026-02-02 | [「沒產品、沒營收」也能成獨角獸](https://www.infoai.com.tw/blog/ai-research-startups-funding-without-products) |
+| RentAHuman.ai：AI Agent 可租用真人執行現實世界任務 | Product Hunt | 2026-02-05 | [RentAHuman.ai](https://www.producthunt.com/products/rentahuman-ai) |
+| V2EX 爆文：花 3 萬美元和 4 個月開發 Agent 網頁監控工具 coolvibe.io | V2EX | Hot | [花 4 个月和 3 万刀做了个 Agent 网页支持工具](https://www.v2ex.com/t/1191528) |
+| 華爾街見聞：AI、機器人春節大戰，本週重磅日程 | Wall Street CN | 08:12 | [本周重磅日程：AI、機器人春節大戰](https://wallstreetcn.com/articles/3765243) |
 
 ## 👥 L6: 人才與生產力
 | 中文摘要 | 來源 | 時間 | 標題 |
 |----------|------|------|------|
-| 紐約州提出 FAIR News Act，要求新聞機構標示 AI 生成內容，人工審核後方可發布 | Hacker News | 21h ago | [New York bill requires disclaimers on AI-generated news](https://www.niemanlab.org/2026/02/a-new-bill-in-new-york-would-require-disclaimers-on-ai-generated-news-content/) |
-| 如何有效用 AI 寫高品質程式碼：建立願景、精確文件、偵錯系統、程式碼審查等級標記 | Hacker News | 12h ago | [How to effectively write quality code with AI](https://heidenstedt.org/posts/2026/how-to-effectively-write-quality-code-with-ai/) |
-| PwC 全球 CEO 調查：僅 12% 企業同時看到 AI 增收+降本，56% 財務無感，關鍵在企業級整合 | InfoAI | 01-29 | [為什麼多數企業看不到 AI ROI](https://www.infoai.com.tw/blog/ai-roi-enterprise-integration-accountability-chain-pwc-ceo-survey-2026) |
-| AI 行政後勤化：差別不在工具升級，而在任務交付邊界與責任歸屬的重新定義 | InfoAI | 02-06 | [把行政後勤 AI 化](https://www.infoai.com.tw/blog/back-office-ai-from-digitization-to-governed-digital-labor) |
-| AI 不是取代工作，而是取代幻覺：資深工程師反思身分認同與 AI 時代的槓桿效應 | Dev.to | 02-03 | [AI isn't taking our jobs — It's taking our illusions](https://dev.to/igbominadeveloper/ai-isnt-take-our-jobs-its-taking-our-illusions-138j) |
-| 教 Claude Code 你的開發標準：CLAUDE.md + 自訂 skill + TDD 工作流程實戰 | Dev.to | 02-06 | [Teaching Claude Code Your Standards](https://dev.to/helderberto/teaching-claude-code-your-standards-k9p) |
-| 用 Claude Code Skill 取代 Plop 產生器，實現 React 元件骨架的確定性產出 | Dev.to | 02-06 | [Replacing Plop with Claude Code Skill](https://dev.to/mbarzeev/replacing-a-plop-react-component-generator-with-a-claude-code-skill-5do) |
-| HuggingFace 用 Claude 教開源模型寫 CUDA kernel，upskill 工具釋出 | HuggingFace Blog | 01-28 | [We Got Claude to Build CUDA Kernels and teach open models!](https://huggingface.co/blog/upskill) |
-| 台灣 GDP 因 AI 外需爆衝 8.63%（2025 全年），但成長高度集中出口鏈，金融穩定風險上升 | InfoAI | 02-02 | [台灣GDP 爆衝的真相：AI 外需把成長推到高檔](https://www.infoai.com.tw/blog/taiwan-gdp-ai-export-financial-stability-risk) |
-| AI「Grok」深偽事件：倫理後置的投資回收危機，法國檢察搜索 X 辦公室 | はてなブックマーク | 02-06 | [AI「Grok」のディープフェイク騒動](https://www.nikkei.com/article/DGXZQOGN3019Q0Q6A130C2000000/) |
-| Fitbit 創辦人打造 Luffu：AI 家庭全員健康共享互助平台 | 科技新報 | 02-07 | [Fitbit 創辦人打造 AI 家庭健康平台](https://technews.tw/2026/02/07/fitbit-founders-launch-ai-platform-to-help-families-monitor-their-health/) |
-| Moltbook 不是 AI 社會：缺乏身分驗證的「自主 agent 社交網路」實為人類操控 | Dev.to | 02-04 | [Moltbook Is Not an AI Society](https://dev.to/richardpascoe/moltbook-is-not-an-ai-society-4h6d) |
+| McKinsey 25,000 AI Agent 納入員工數，顧問業金字塔養成路徑需重畫 | InfoAI | 2026-02-08 | [McKinsey 的「25,000 AI Agents」不是噱頭](https://www.infoai.com.tw/blog/mckinsey-ai-agents-digital-workforce-redefined) |
+| GPT-4o 退役風波：情感依附已成平台風險 | InfoAI | 2026-02-08 | [GPT-4o 退役風波揭露的不是模型更替](https://www.infoai.com.tw/blog/gpt-4o-retirement-emotional-attachment-platform-risk) |
+| AI 不是搶你的工作——是搶走你的幻覺 | Dev.to | 2026-02-03 | [AI isn't taking our jobs — It's taking our illusions](https://dev.to/igbominadeveloper/ai-isnt-take-our-jobs-its-taking-our-illusions-138j) |
+| 把行政後勤 AI 化：差別不在工具，在你把什麼工作交出去 | InfoAI | 2026-02-06 | [把行政後勤 AI 化](https://www.infoai.com.tw/blog/back-office-ai-from-digitization-to-governed-digital-labor) |
+| OpenAI 企業推進：招募大量 AI 顧問填補導入落差 | AI News | 08:00 | [OpenAI's enterprise push: The hidden story behind AI's sales race](https://www.artificialintelligence-news.com/news/openai-ai-consultants-enterprise-adoption-challenges/) |
+| AI Expo 2026：從實驗試點到 AI 生產的治理與資料準備 | AI News | 16:33 | [AI Expo 2026 Day 1: Governance and data readiness](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/) |
+| Google AI 影片理解實作指南：Gemini 3.0 Flash 用於機器人任務分解 | Dev.to | 2026-02-05 | [Video Understanding with Gemini 3.0 Flash for Robotics](https://dev.to/googleai/video-understanding-with-gemini-30-flash-for-robotics-5896) |
+| Agent Factory 回顧：解析開源 Agentic 模型的訓練全流程 | Dev.to | 2026-02-06 | [Agent Factory Recap: Cracking Open an Open Model](https://dev.to/googleai/agent-factory-recap-cracking-open-an-open-model-42e6) |
+| MIT 新課程「AI 與理性」：哲學角度審視 AI 決策的理性基礎 | MIT News AI | 2026-01-30 | [The philosophical puzzle of rational AI](https://news.mit.edu/2026/philosophical-puzzle-rational-artificial-intelligence-0130) |
+| V2EX 熱議：AI 寫程式已經像「薩滿跳大神」——Vibe Coding 時代的身分危機 | V2EX | Hot | [为什么 AI 就这么聪明了](https://www.v2ex.com/t/1191488) |
+| Waypoint-1：Overworld 推出即時互動影片擴散模型，可用鍵鼠控制 | HuggingFace Blog | 2026-01-20 | [Introducing Waypoint-1: Real-time interactive video diffusion](https://huggingface.co/blog/waypoint-1) |
+| HuggingFace Daggr：視覺化串接 AI 工作流的 Python 套件 | HuggingFace Blog | 2026-01-29 | [Introducing Daggr: Chain apps programmatically, inspect visually](https://huggingface.co/blog/daggr) |
