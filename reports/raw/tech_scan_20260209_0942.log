@@ -1,0 +1,31 @@
+=== 開始掃描 [tech] 20260209_0942 ===
+Topic: tech
+Source: all
+Limit: 15
+Budget: $10
+
+吹吹，tech 主題掃描完成！報告已存入：
+
+**`reports/raw/tech_scan_20260209_0942.md`**
+
+### 報告摘要
+
+- **897 筆資料**來自 35 個來源，全量 `--deep` 抓取
+- **頭條精選 10 則**涵蓋 8 個不同來源（Hacker News, GitHub, r/programming, r/ClaudeAI, TechCrunch, r/LocalLLaMA, はてなブックマーク, The Verge, Publickey, r/programming）
+
+### 今日焦點
+
+1. **AI Agent 生態爆發** — superpowers 框架 47K stars、ACP Registry 啟動、Agent Trace 標準提唱、Codex Skills 目錄發布
+2. **開源信任危機** — Vouch 系統因應 AI 低品質貢獻，「好程式碼的無聲消亡」引發共鳴
+3. **AI 品牌大戰** — 超級盃廣告全面 AI 化、AI.com 域名 7,000 萬美元成交
+4. **Qwen3.5 來了** — PR 已提交，Qwen3 Coder Next 成為 60GB 以下首個可用 coding 模型
+5. **Claude Code 內幕** — 放棄 RAG 選擇 Agentic Search，日本社群 267 users 熱議
+
+=== 掃描完成 ===
+Cover: tech_cover.png
+Pages: synced tech.md
+error: cannot pull with rebase: You have unstaged changes.
+error: Please commit or stash them.
+To github.com:yelban/news-aggregator-skill.TW.git
+   317f118..e5544d2  main -> main
+Git: committed and pushed
