@@ -1,3 +1,4 @@
+![cover](ai_university_cover.png)
 # 🎓 AI 轉型大學日報
 > 生成時間：2026-02-09 08:42 | 43 個資訊來源
 
