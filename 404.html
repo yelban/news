@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Report Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+// Apply theme before paint to prevent flash
+(function(){
+  var t = localStorage.getItem('theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme:light)').matches ? 'light' : 'dark';
+  if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+})();
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* Dark theme (default) */
+:root{
+  --bg:#020617;
+  --surface:#0f172a;
+  --surface2:#1e293b;
+  --border:#1e293b;
+  --border2:#334155;
+  --text:#f8fafc;
+  --text2:#94a3b8;
+  --text3:#64748b;
+  --accent:#38bdf8;
+  --accent2:#22c55e;
+  --red:#f87171;
+  --link-title:#bfdbfe;
+  --badge-latest-text:#020617;
+}
+
+/* Light theme */
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --surface2:#f1f5f9;
+  --border:#e2e8f0;
+  --border2:#cbd5e1;
+  --text:#0f172a;
+  --text2:#475569;
+  --text3:#94a3b8;
+  --accent:#0369a1;
+  --accent2:#15803d;
+  --red:#dc2626;
+  --link-title:#1e40af;
+  --badge-latest-text:#fff;
+}
+
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+a{color:var(--accent);text-decoration:none;transition:color .15s}
+[data-theme="light"] a:hover{color:#0284c7}
+:root a:hover{color:#7dd3fc}
+
+/* Loading */
+#loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;gap:20px}
+.spinner{width:36px;height:36px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loading span{color:var(--text3);font-size:14px;letter-spacing:.02em}
+
+/* Error */
+#error{display:none;text-align:center;padding:120px 20px}
+#error h1{font-family:'Newsreader',Georgia,serif;font-size:4rem;font-weight:700;color:var(--text3);margin-bottom:16px}
+#error p{color:var(--text2);margin-bottom:32px;font-size:1.05rem}
+#error a{display:inline-block;padding:10px 24px;border:1px solid var(--border2);border-radius:8px;color:var(--text2);font-size:14px;transition:all .2s}
+#error a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Header bar */
+.header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s}
+.header a{color:var(--text);font-size:15px;font-weight:600;letter-spacing:-.01em}
+.header a:hover{color:var(--accent)}
+.badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+.badge.latest{background:var(--accent2);color:var(--badge-latest-text)}
+.badge.hist{background:var(--red);color:#fff}
+.header-spacer{flex:1}
+.theme-toggle{background:none;border:1px solid var(--border2);border-radius:8px;padding:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:color .15s,border-color .15s}
+.theme-toggle:hover{color:var(--text);border-color:var(--text3)}
+.theme-toggle svg{width:16px;height:16px}
+.icon-sun,.icon-moon{display:none}
+[data-theme="light"] .icon-moon{display:block}
+[data-theme="light"] .icon-sun{display:none}
+:root .icon-sun{display:block}
+:root .icon-moon{display:none}
+
+/* Article container */
+.article{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+
+/* Cover */
+.cover-img{width:100%;border-radius:12px;margin-bottom:32px;aspect-ratio:2.35/1;object-fit:cover}
+
+/* Markdown typography */
+.article h1{font-family:'Newsreader',Georgia,serif;font-size:2.5rem;font-weight:700;line-height:1.25;margin:32px 0 16px;letter-spacing:-.02em}
+.article h2{font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;line-height:1.3;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--accent)}
+.article h3{font-size:1.3rem;font-weight:600;line-height:1.4;margin:28px 0 8px;padding-top:24px;border-top:1px solid var(--border);color:var(--text)}
+.article h3:first-of-type,.article hr+h3{border-top:none;padding-top:0}
+.article h3 a{color:var(--link-title);transition:color .15s}
+.article h3 a:hover{color:var(--accent)}
+.article h3 a[href^="http"]::after{content:'';display:inline-block;width:14px;height:14px;margin-left:5px;vertical-align:-1px;opacity:.35;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") no-repeat center/contain;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") no-repeat center/contain}
+.article h3 a[href^="http"]:hover::after{opacity:.6}
+.article p{margin:10px 0;color:var(--text);line-height:1.75}
+.article blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:16px 0;color:var(--text2);background:var(--surface);border-radius:0 8px 8px 0;font-size:1.05rem}
+.article ul,.article ol{padding-left:24px;margin:10px 0}
+.article li{margin:6px 0;line-height:1.7}
+.article li strong{color:var(--text)}
+.article code{background:var(--surface2);padding:2px 7px;border-radius:4px;font-size:.85em;color:var(--accent)}
+.article pre{background:var(--surface);padding:20px;border-radius:10px;overflow-x:auto;margin:16px 0;border:1px solid var(--border)}
+.article pre code{background:none;padding:0;color:var(--text2)}
+.article table{width:100%;border-collapse:collapse;margin:16px 0;font-size:1rem}
+.article th,.article td{border:1px solid var(--border);padding:10px 14px;text-align:left}
+.article th{background:var(--surface);color:var(--text2);font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em}
+.article hr{border:none;border-top:1px solid var(--border);margin:32px 0}
+.article img{max-width:100%;border-radius:8px}
+.article strong{color:var(--text)}
+
+/* Back to top */
+.back-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--surface2);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .2s,background .2s;z-index:20}
+.back-top:hover{background:var(--accent);border-color:var(--accent)}
+.back-top.show{opacity:1}
+.back-top svg{width:18px;height:18px;color:var(--text)}
+.back-top:hover svg{color:var(--bg)}
+
+@media(max-width:640px){
+  .article{padding:24px 16px 60px}
+  .article h1{font-size:1.8rem}
+  .article h2{font-size:1.4rem}
+  .header{padding:12px 16px}
+  .back-top{bottom:16px;right:16px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .spinner{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <span>Loading report...</span>
+</div>
+
+<div id="error">
+  <h1>404</h1>
+  <p id="error-msg">Page not found</p>
+  <a id="home-link" href="/">Back to Home</a>
+</div>
+
+<div id="app" style="display:none">
+  <div class="header">
+    <a id="nav-topic" href="/">Topic</a>
+    <span id="badge-container"></span>
+    <span class="header-spacer"></span>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+  <div class="article" id="content"></div>
+</div>
+
+<div class="back-top" id="backTop" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+<script>
+(function() {
+  // Theme toggle
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function() {
+    var isLight = document.documentElement.hasAttribute('data-theme');
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+
+  var path = location.pathname;
+
+  // Auto-detect base path: everything before /reports/
+  var reportsIdx = path.indexOf('/reports/');
+  if (reportsIdx < 0) { showError('Invalid path'); return; }
+  var base = path.substring(0, reportsIdx);
+
+  // Parse: /reports/{topic}/ or /reports/{topic}/{timestamp}/
+  var rest = path.substring(reportsIdx + '/reports/'.length).replace(/\/+$/, '');
+  var parts = rest.split('/').filter(Boolean);
+
+  if (parts.length < 1 || parts.length > 2) { showError('Invalid report path'); return; }
+
+  var topic = parts[0];
+  var timestamp = parts[1] || null;
+  var validTopics = ['tech', 'perovskite', 'ai_university'];
+  if (validTopics.indexOf(topic) < 0) { showError('Unknown topic: ' + topic); return; }
+
+  // Determine fetch URL
+  var mdUrl;
+  if (timestamp) {
+    if (!/^\d{8}_\d{4}$/.test(timestamp)) { showError('Invalid timestamp format'); return; }
+    mdUrl = base + '/reports/raw/' + topic + '_scan_' + timestamp + '.md';
+  } else {
+    mdUrl = base + '/reports/' + topic + '.md';
+  }
+
+  // Setup nav
+  document.getElementById('home-link').href = base + '/';
+  var topicNames = {tech: 'Tech', perovskite: 'Perovskite', ai_university: 'AI University'};
+  var navTopic = document.getElementById('nav-topic');
+  navTopic.textContent = topicNames[topic] || topic;
+  navTopic.href = base + '/reports/' + topic + '/';
+
+  // Badge
+  var badgeContainer = document.getElementById('badge-container');
+  if (timestamp) {
+    var ts = timestamp.substring(0,4) + '-' + timestamp.substring(4,6) + '-' + timestamp.substring(6,8) +
+             ' ' + timestamp.substring(9,11) + ':' + timestamp.substring(11,13);
+    badgeContainer.innerHTML = '<span class="badge hist">' + ts + '</span>' +
+      ' <a href="' + base + '/reports/' + topic + '/" style="font-size:13px;color:var(--text3)">View latest</a>';
+  } else {
+    badgeContainer.innerHTML = '<span class="badge latest">Latest</span>';
+  }
+
+  // Fetch and render
+  fetch(mdUrl)
+    .then(function(res) {
+      if (!res.ok) throw new Error(res.status);
+      return res.text();
+    })
+    .then(function(md) {
+      // Process cover image
+      md = md.replace(/^!\[cover\]\(([^)]+)\)/m, function(m, filename) {
+        return '<img class="cover-img" src="' + base + '/reports/raw/' + filename + '" alt="cover" loading="eager">';
+      });
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+
+      var content = document.getElementById('content');
+      content.innerHTML = marked.parse(md);
+
+      var h1 = content.querySelector('h1');
+      if (h1) document.title = h1.textContent;
+
+      // Split blockquote "A | B" into separate lines
+      content.querySelectorAll('blockquote p').forEach(function(p) {
+        if (p.innerHTML.indexOf(' | ') > -1) {
+          p.innerHTML = p.innerHTML.split(' | ').join('<br>');
+        }
+      });
+
+      // Lazy load images below fold
+      content.querySelectorAll('img:not(.cover-img)').forEach(function(img) {
+        img.loading = 'lazy';
+      });
+    })
+    .catch(function() {
+      showError('Report not found: ' + topic + (timestamp ? ' / ' + timestamp : ''));
+    });
+
+  // Back to top button
+  var btn = document.getElementById('backTop');
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('show', window.scrollY > 400);
+  }, {passive: true});
+  btn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  function showError(msg) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('error-msg').textContent = msg;
+    document.getElementById('home-link').href = base || '/';
+  }
+})();
+</script>
+</body>
+</html>
